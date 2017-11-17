@@ -1,0 +1,106 @@
+*{
+box-sizing:border-box; /*This factors the padding into the width size*/
+margin: 0;
+padding: 0;
+}
+
+/*Add hover effect, font family, border around links, media queries to collapse for mobile devices*/
+
+/*Targeting the main nav class*/
+.main-nav {
+  display: flex;
+  min-height: 50px; /*Adding height to give it some spacing. Designating the smallest the height will be is 50px*/
+  background: lavender;
+  padding: 0 1rem; /*Giving some space on the left and right only of 16 pixels. No padding on top and bottom*/
+  align-items: center; /*This centers the items on the vertical axis. Justifid content controls horizontal alignment (left and right) with flexbox*/
+  font-size: 1.5rem; /*Font size is inhereited from parent to child so by giving the parent this font size all children follow. This makes the font size 24pixels*/
+}
+
+.hamburger { /*This will hide the button tht was created*/
+  display: none;
+}
+
+.main-nav-list{
+  display: flex;
+  list-style: none;
+  margin-left: auto; /*This will push the list items all the way to right. Margin left auto pushes it all the way to the right*/
+
+}
+
+.main-nav-list li { /*This targets the li child witin the .main-nav-list parent*/
+  margin-left: 1rem;
+  text-align: center; /*Targeting the li children (the links) to be centered*/
+}
+
+@media (max-width: 600px) { /*This triggeres a differnt style (override) when the screen is at 600px*/
+  /*The main nav will wrap the content*/
+  .main-nav{
+    flex-wrap: wrap;   /*Targeting the main nav to tel it to flex wrap wrap which will make the navigation more than one row when the screen is shrunken*/
+  }
+
+  .hamburger{
+    display: block; /*This brings the button back. Button elements are in-line elements by default so i'm getting it to display block*/
+    margin-left: auto; /*This pushes the button all the way to the far right*/
+    background: transparent;
+    border: none; /*THe button has a border by default so this is clearing it*/
+    width: 50px;
+    height: 50px;
+    position: relative;/*By giving the divs something other than static, i will be able to target the children to be positioned as absolute in the below div. If i didnt position the parent realtive, the hamburger divs would stack on top of each other in the body of the page*/
+
+  }
+
+  .hamburger div{ /*Middle bun*/
+    height: 7px;
+    width: 50px;
+    background: #000;
+    position: absolute;
+    border-radius: 3px;
+    transform: translate(-50%, 0%); /*This shifts the anchor point. Absolute positioning by default creates an anchor point in the top left corner. All divs by default creates an anchor point that's positioned in the top left*/
+    left: 50%;
+    transition: .25s;
+  }
+
+  .hamburger div:first-child{ /*If you are a div and are the first child */
+    top: 25%; /*This is the space*/
+
+  }
+
+  .hamburger div:nth-child(2){ /*If you are a div and are the first child */
+    top: 50%; /*This is the space that's going to move the elment from the top.*/
+
+  }
+
+  .hamburger div:nth-child(3){ /*If you are a div and are the first child */
+    top: 75%; /*This is the space*/
+  }
+
+  .hamburger.close div:first-child{ /*If you have the class of both hamburger and close, do this. The previous styles above will now get overruled*/
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg); /*CSS reads a document from right to left*/
+
+  }
+
+  .hamburger.close div:nth-child(2){
+    opacity: 0;
+  }
+
+  .hamburger.close div:nth-child(3){
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .main-nav-list{
+    display: block; /*This will force to become a block element*/
+    width: 100%; /*Flex items only take up the width necessary for it's content. I'm telling the child to take up the full width*/
+    max-height: 0px;
+    overflow: hidden; /*This is saying, If you have content that is bigger than the height, hide it*/
+    transition: .25s;
+  }
+
+  .main-nav-list.open {
+    max-height: 500px;
+
+  }
+
+}
+/*To make the hamburger icon, I'll create 3 divs with a background color. Another way to do it is with a pseudo element */
