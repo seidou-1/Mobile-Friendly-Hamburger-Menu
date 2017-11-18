@@ -1,9 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta+Malar|Shrikhand');
+
 *{
 box-sizing:border-box; /*This factors the padding into the width size*/
 margin: 0;
 padding: 0;
 }
 
+a:visited {text-decoration: none; color: black;}
+/*img{border-radius:20%;}*/
+
+
+li a:hover {
+  border: 3px solid #333333;
+  overflow: scroll;
+}
+
+nav {
+  font-family: 'Shrikhand', cursive;
+
+}
 
 /*Add hover effect, font family, border around links, media queries to collapse for mobile devices*/
 
